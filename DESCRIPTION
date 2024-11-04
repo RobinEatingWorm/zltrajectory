@@ -1,11 +1,29 @@
-Package: zltrajectory
 Type: Package
-Title: What the Package Does (Title Case)
+Package: zltrajectory
+Title: Analysis of Zebrafish Larvae Trajectories
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Authors@R: 
+    person("Gavin", "Pu", , "gavin.pu@mail.utoronto.ca", role = c("aut", "cre"))
+Maintainer: Gavin Pu <gavin.pu@mail.utoronto.ca>
+Description: Zebrafish larvae swim in discrete bouts, where each bout is
+    characterized by a sudden burst of speed. `zltrajectory` assists users
+    in identifying the beginnings of swim bouts and performing other
+    analyses on the trajectory of zebrafish larvae.
+License: MIT + file LICENSE
+Depends: 
+    R (>= 2.10)
+Imports: 
+    graphics,
+    grDevices,
+    pracma,
+    stats
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+VignetteBuilder: 
+    knitr
+Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 7.3.1
