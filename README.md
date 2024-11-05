@@ -129,3 +129,11 @@ Tadres, D., & Louis, M. (2020). PiVR: An affordable and versatile
 closed-loop platform to study unrestrained sensorimotor behavior. *PLoS
 Biology*, *18*(7), e3000712.
 <https://doi.org/10.1371/journal.pbio.3000712>
+
+## Acknowledgements
+
+This package was developed as part of an assessment for the 2024 course
+BCB410H1: Applied Bioinformatics at the University of Toronto, Toronto,
+Canada. `zltrajectory` welcomes issues, enhancement requests, and other
+contributions. To submit an issue, use GitHub issues. Many thanks to
+those who provided feedback to improve this package.
