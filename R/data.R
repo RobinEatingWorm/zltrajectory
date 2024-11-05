@@ -7,6 +7,12 @@
 #'   dark, followed by six cycles of 10 minutes in the light and 4 minutes in
 #'   the dark.
 #'
+#'   The original dataset was stored in a text file and consisted of metadata at
+#'   the beginning of the file, followed by a table of measurements recorded
+#'   during the trial. The version presented in this package has adapted the
+#'   original by removing the metadata and only saving three columns in the
+#'   table required for this package.
+#'
 #' @format A data frame with 169214 observations on 3 variables.
 #'   \describe{
 #'     \item{Trial.time}{The time since the beginning of the trial that an
@@ -24,7 +30,6 @@
 #'   Cofalla, C., Schuettrumpf, H., Hollert, H., Salomons, E., & Ostfeld, A.
 #'   (2016). A sensitive biomarker for the detection of aquatic contamination
 #'   based on behavioral assays using zebrafish larvae. \emph{Ecotoxicology and
-#'   Environmental Safety}, 133, 271–280.
+#'   Environmental Safety}, \emph{133}, 271–280.
 #'   https://doi.org/10.1016/j.ecoenv.2016.07.033
-#'
 "cadmium_zebrafish"
