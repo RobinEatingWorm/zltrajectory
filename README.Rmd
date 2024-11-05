@@ -35,8 +35,7 @@ Use the following commands to install the latest development version of the pack
 
 ```{r, eval=FALSE}
 install.packages("devtools")
-devtools::install_github("RobinEatingWorm/zltrajectory_private",
-                         build_vignettes = TRUE)
+devtools::install_github("RobinEatingWorm/zltrajectory", build_vignettes = TRUE)
 library(zltrajectory)
 ```
 

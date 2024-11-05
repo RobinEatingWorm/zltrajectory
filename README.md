@@ -32,8 +32,7 @@ the package.
 
 ``` r
 install.packages("devtools")
-devtools::install_github("RobinEatingWorm/zltrajectory_private",
-                         build_vignettes = TRUE)
+devtools::install_github("RobinEatingWorm/zltrajectory", build_vignettes = TRUE)
 library(zltrajectory)
 ```
 
