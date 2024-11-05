@@ -102,6 +102,8 @@ this package.
 
 ## References
 
+Borchers, H. W. (2023). *pracma: Practical Numerical Math Functions*.
+
 Kawashima, T., Zwart, M. F., Yang, C.-T., Mensh, B. D., & Ahrens, M. B.
 (2016). The Serotonergic System Tracks the Outcomes of Actions to
 Mediate Short-Term Motor Learning. *Cell*, *167*(4), 933-946.e20.
@@ -118,6 +120,10 @@ sensitive biomarker for the detection of aquatic contamination based on
 behavioral assays using zebrafish larvae. *Ecotoxicology and
 Environmental Safety*, *133*, 271–280.
 <https://doi.org/10.1016/j.ecoenv.2016.07.033>
+
+R Core Team. (2023). *R: A Language and Environment for Statistical
+Computing*. R Foundation for Statistical Computing.
+<https://www.R-project.org/>
 
 Tadres, D., & Louis, M. (2020). PiVR: An affordable and versatile
 closed-loop platform to study unrestrained sensorimotor behavior. *PLoS
