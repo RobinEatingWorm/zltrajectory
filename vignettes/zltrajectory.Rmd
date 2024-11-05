@@ -1,0 +1,166 @@
+---
+title: "zltrajectory Tutorial"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{zltrajectory Tutorial}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.align = "center",
+  fig.height = 5,
+  fig.width = 7,
+  out.width = "100%"
+)
+```
+
+## Introduction
+
+`zltrajectory` is an R package designed for analyzing 2D movement data on zebrafish larvae. Due to their behavior of swimming in discrete bouts, consisting of an initial burst of speed, this package is primarily designed to identify where the beginnings of swim bouts occur given the trajectory of a zebrafish larva.
+
+Use the following commands to download `zltrajectory`.
+
+```{r, eval=FALSE}
+require("devtools")
+devtools::install_github("RobinEatingWorm/zltrajectory", build_vignettes = TRUE)
+```
+
+Use the following command to list all functions available in the package.
+
+```{r, eval=FALSE}
+ls("package:zltrajectory")
+```
+
+Use the following command to list all sample datasets available in the package.
+
+```{r, eval=FALSE}
+data(package = "zltrajectory")
+```
+
+Use the following command to load and attach the package.
+
+```{r setup}
+library(zltrajectory)
+```
+
+## Creating a Trajectory
+
+The `create_trajectory` function builds a data frame that is valid for further use by other analysis functions within this package. Below, a trajectory is created from `cadmium_zebrafish`, an example dataset included with this package.
+
+
+```{r, warning=FALSE}
+trajectory <- create_trajectory(cadmium_zebrafish,
+                                x = "X.center",
+                                y = "Y.center",
+                                t = "Trial.time")
+```
+
+## Initial Visualizations
+
+Use the `plot_trajectory` function to visualize the trajectory. Since the trajectory contains `r nrow(trajectory)` observations, only the 21st minute (observations with time between 1200 and 1260 seconds) of the dataset will be visualized.
+
+```{r}
+plot_trajectory(trajectory,
+                xlab = "x-position (mm)", ylab = "y-position (mm)",
+                time_min = 1200, time_max = 1260)
+```
+
+The `plot_diagnostics` function creates a plot of distances traveled between each consecutive pair of observations.
+
+```{r}
+plot_diagnostics(trajectory,
+                 xlab = "Time (s)", ylab = "Distance (mm)",
+                 time_min = 1200, time_max = 1260)
+```
+
+To zoom in on the plot, adjust the `time_min` and `time_max` arguments to change the x-axis plotting limits and the `ylim` argument to change the y-axis plotting limits.
+
+```{r}
+plot_diagnostics(trajectory,
+                 xlab = "Time (s)", ylab = "Distance (mm)",
+                 time_min = 1240, time_max = 1260, ylim = c(0, 5))
+```
+
+It appears that bursts of speed during the zebrafish’s swim bouts can be detected when it travels over 2 mm between consecutive times recorded.
+
+## Finding Bouts
+
+The `find_bouts` function illustrates the primary functionality of this package. This function returns a vector of row indices for the trajectory data frame that correspond to the beginnings of swim bouts.
+
+As shown below, the `min_distance` argument specifies the minimum distance a fish must travel between consecutive times for a peak (indicating a burst of speed) in the distance time series to be detected. The `min_time` argument specifies the minimum time between each detected peak, which is suggested to be set to 600 ms to avoid cross-talk between swim bouts (Kawashima et al., 2020).
+
+If `return_peaks` is set to `TRUE`, this function returns a list that contains a vector of row indices that correspond to peaks used to detect the beginnings of swim bouts in addition to the vector of swim bout indices.
+
+```{r}
+bouts_and_peaks_list <- find_bouts(trajectory,
+                                   min_distance = 2,
+                                   min_time = 0.6,
+                                   return_peaks = TRUE)
+```
+
+The `plot_diagnostics` function can also be used to assess the correctness of swim bouts. In the plot showing times between 1240 and 1260 seconds below, the beginnings of swim bouts are shown in green while the peaks used to detect them are shown in red. The line in blue shows the minimum distance of 2 required to detect peaks.
+
+```{r}
+plot_diagnostics(trajectory,
+                 xlab = "Time (s)", ylab = "Distance (mm)",
+                 time_indices = bouts_and_peaks_list, hline = 2,
+                 time_min = 1240, time_max = 1260)
+```
+
+## Trajectory Analysis
+
+This package includes three additional functions to analyze zebrafish larvae trajectories.
+
+* `calculate_angles` calculates trajectory angles formed by every consecutive group of three observations. If the `bouts` argument is specified, trajectory angles formed by every consecutive group of three bouts are calculated instead.
+* `calculate_bouts_per_time_unit` calculates the number of bouts per unit of time specified. The code below calculates the number of bouts per minute since the time in the trajectory data frame was recorded in seconds.
+* `calculate_distances` calculates distances between every consecutive pair of observations. If the `bouts` argument is specified, distances between every consecutive pair of bouts are calculated instead.
+
+```{r}
+bouts <- bouts_and_peaks_list$bouts
+angles <- calculate_angles(trajectory, bouts = bouts)
+bouts_per_minute <- calculate_bouts_per_time_unit(trajectory, bouts, unit = 60)
+distances <- calculate_distances(trajectory, bouts = bouts)
+```
+
+Distributions can be visualized using the `plot_distribution` function. The following plot shows a histogram of trajectory angles formed by bouts.
+
+```{r}
+plot_distribution(angles, "histogram",
+                  main = "Distribution of Angles",
+                  xlab = "Angle (degrees)",
+                  ylab = "Density",
+                  breaks = 36,
+                  xlim = c(-180, 180))
+```
+
+The following plot shows a KDE (kernel density estimate) of the number of bouts per minute.
+
+```{r}
+plot_distribution(bouts_per_minute, "kde",
+                  main = "Distribution of Bouts per Minute",
+                  xlab = "Bouts per Minute",
+                  ylab = "Density")
+```
+
+The following plot shows an ECDF (empirical cumulative distribution function) of distances between bouts.
+
+```{r}
+plot_distribution(distances, "ecdf",
+                  main = "Distribution of Distances",
+                  xlab = "Distance (mm)",
+                  ylab = "Cumulative Density")
+```
+
+## References
+
+Kawashima, T., Zwart, M. F., Yang, C.-T., Mensh, B. D., & Ahrens, M. B. (2016). The Serotonergic System Tracks the Outcomes of Actions to Mediate Short-Term Motor Learning. *Cell*, *167*(4), 933-946.e20. https://doi.org/10.1016/j.cell.2016.09.055
+
+## Session Information
+
+```{r}
+sessionInfo()
+```
