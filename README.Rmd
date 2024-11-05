@@ -70,7 +70,7 @@ This package also contains a sample dataset named `cadmium_zebrafish` adapted fr
 
 An illustration showing an overview of this package is shown below.
 
-![An overview of zltrajectory](./inst/extdata/overview.png)
+![](./inst/extdata/overview.png)
 
 ## Contributions
 
