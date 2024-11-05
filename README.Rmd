@@ -74,7 +74,7 @@ An illustration showing an overview of this package is shown below.
 
 ## Contributions
 
-The author of the package is Gavin Pu. The author wrote the `find_bouts` function using the R package `pracma` to detect peaks (local maxima) in a time series of distances traveled between consecutive time points recorded in data. The base R packages `graphics` and `grDevices` were used in the plotting function `plot_diagnostics`, `plot_trajectory`, and `plot_distribution` to generate their respective plots. Additionally, `plot_distribution` depends on the base R package `stats` to calculate KDEs and ECDFs. No other dependencies were used in the source code of this package. Generative AI tools were not used in the development of this package.
+The author of the package is Gavin Pu. The author wrote the `find_bouts` function using the R package `pracma` to detect peaks (local maxima) in a time series of distances traveled between consecutive time points recorded in data. The base R packages `graphics` and `grDevices` were used in the plotting functions `plot_diagnostics`, `plot_trajectory`, and `plot_distribution` to generate their respective plots. Additionally, `plot_distribution` depends on the base R package `stats` to calculate KDEs and ECDFs. No other dependencies were used in the source code of this package. Generative AI tools were not used in the development of this package.
 
 ## References
 
