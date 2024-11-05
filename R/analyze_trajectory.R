@@ -24,6 +24,11 @@
 #' bouts <- find_bouts(trajectory, min_distance = 2, min_time = 0.6)
 #' angles <- calculate_angles(trajectory, bouts = bouts)
 #'
+#' @references Tadres, D., & Louis, M. (2020). PiVR: An affordable and versatile
+#'   closed-loop platform to study unrestrained sensorimotor behavior.
+#'   \emph{PLoS Biology}, \emph{18}(7), e3000712.
+#'   https://doi.org/10.1371/journal.pbio.3000712
+#'
 #' @export
 calculate_angles <- function(trajectory, bouts = NULL) {
   # Validate arguments
