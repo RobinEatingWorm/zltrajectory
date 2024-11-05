@@ -81,11 +81,7 @@ adapted from Nuesser (2016). Refer to the documentation of
 
 An illustration showing an overview of this package is shown below.
 
-<figure>
-<img src="./inst/extdata/overview.png"
-alt="An overview of zltrajectory" />
-<figcaption aria-hidden="true">An overview of zltrajectory</figcaption>
-</figure>
+![](./inst/extdata/overview.png)
 
 ## Contributions
 
