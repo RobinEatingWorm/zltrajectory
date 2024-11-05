@@ -154,3 +154,5 @@ calculate_distances <- function(trajectory, bouts = NULL) {
   distances <- unname(linear_algebra_distances(p1, p2))
   return(distances)
 }
+
+# [END]

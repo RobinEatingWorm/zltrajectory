@@ -43,3 +43,5 @@ create_trajectory <- function(data, x, y, t = NULL, rate = NULL) {
   row.names(trajectory) <- NULL
   return(trajectory)
 }
+
+# [END]

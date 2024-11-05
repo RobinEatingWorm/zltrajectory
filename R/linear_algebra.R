@@ -51,3 +51,5 @@ linear_algebra_distances <- function(p1, p2) {
   # Distance formula
   return(apply(p2 - p1, 1, norm, type = "2"))
 }
+
+# [END]

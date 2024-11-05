@@ -150,3 +150,5 @@ validate_trajectory <- function(trajectory, bouts = NULL) {
   # Nothing to return if all checks passed
   return(invisible(NULL))
 }
+
+# [END]

@@ -268,3 +268,5 @@ plot_trajectory <- function(trajectory,
   # Plot is finished
   return(invisible(NULL))
 }
+
+# [END]

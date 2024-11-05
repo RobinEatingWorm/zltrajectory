@@ -204,3 +204,5 @@ scale_times_to_integers <- function(trajectory, min_time) {
   min_time <- min_time * (10 ^ decimal_places)
   return(list(integer_times = integer_times, min_time = min_time))
 }
+
+# [END]
