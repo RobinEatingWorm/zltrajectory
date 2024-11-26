@@ -15,7 +15,8 @@ plot_diagnostics(
   time_max = max(trajectory$t),
   ylim = NULL,
   col_time_indices = c("green", "red"),
-  col_hlines = c("blue")
+  col_hlines = c("blue"),
+  legend_default = TRUE
 )
 }
 \arguments{
@@ -33,9 +34,10 @@ the plot. This argument takes either a vector or list of vectors as input.
 The output of `find_bouts()` can be passed into this argument, which will
 display bouts in green and peaks in red by default.}
 
-\item{hlines}{y-values of horizontal lines to be added to the plot. This is
-intended to display the `min_distance` argument from `find_bouts()` so that
-users can see how bouts and peaks were separated.}
+\item{hlines}{numeric values indicating where horizontal lines will be
+plotted on the y-axis. This is intended to display the `min_distance`
+argument from `find_bouts()` so that users can see how bouts and peaks were
+separated.}
 
 \item{time_min}{the minimum time to plot.}
 
@@ -48,6 +50,11 @@ horizontal line specified by `hlines`.}
 `time_indices` argument.}
 
 \item{col_hlines}{colors of each horizontal line in the `hlines` argument.}
+
+\item{legend_default}{whether to display a default legend. This argument is
+`TRUE` by default and assumes that the output of `find_bouts()` has been
+passed into the `time_indices` argument. Otherwise, this argument should be
+set to `FALSE` to avoid the creation of an erroneous legend.}
 }
 \description{
 This function produces a plot of distances traveled between
