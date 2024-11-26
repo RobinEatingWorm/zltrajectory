@@ -79,6 +79,44 @@ validate_data <- function(data, x, y, t = NULL, rate = NULL) {
 }
 
 
+#' Validate Time Indices for Diagnostic Plots
+#'
+#' @description This function performs validation checks on the `time_indices`
+#'   and `col_time_indices` arguments in `plot_diagnostics()`. There is no
+#'   return value.
+#'
+#' @param time_indices the `time_indices` argument from `plot_diagnostics()`.
+#' @param col_time_indices the `col_time_indices` argument from
+#'   `plot_diagonstics()`.
+validate_diagnostic_time_indices <- function(time_indices, col_time_indices) {
+  # Run checks on time indices and colors
+  if (!is.null(time_indices) && !is.numeric(time_indices) &&
+      !is.list(time_indices)) {
+    stop("argument \"time_indices\" must be numeric or list if provided")
+  }
+  if (!is.null(time_indices) && !is.vector(col_time_indices)) {
+    stop("argument \"col_time_indices\" must be vector")
+  }
+  if (is.numeric(time_indices)) {
+    validate_arg(time_indices, "time_indices", "numeric", length_one = FALSE)
+  } else if (is.list(time_indices)) {
+    for (i in seq_along(time_indices)) {
+      validate_arg(time_indices[[i]],
+                   paste0("time_indices[[", i, "]]"),
+                   "numeric",
+                   length_one = FALSE)
+    }
+    if (length(col_time_indices) != length(time_indices)) {
+      stop(paste0("the lengths of \"col_time_indices\" ",
+                  "and \"time indices\" must be the same"))
+    }
+  }
+
+  # Nothing to return if all checks passed
+  return(invisible(NULL))
+}
+
+
 #' Validate Matrices for Linear Algebra Functions
 #'
 #' @description This function performs validation checks on matrices used in
@@ -103,6 +141,27 @@ validate_matrices <- function(m1, m2) {
   }
   if (any(dim(m1) != dim(m2))) {
     stop("matrices must have the same dimensions")
+  }
+
+  # Nothing to return if all checks passed
+  return(invisible(NULL))
+}
+
+
+#' Validate Time Limits on Plots
+#'
+#' @description This function performs validation checks on the minimum and
+#'   maximum times to show in plots that display time on the x-axis. There is no
+#'   return value.
+#'
+#' @param time_min the minimum time to plot.
+#' @param time_max the maximum time to plot.
+validate_time_limits <- function(time_min, time_max) {
+  # Run checks on times
+  validate_arg(time_min, "time_min", "numeric", positive = FALSE)
+  validate_arg(time_max, "time_max", "numeric", positive = FALSE)
+  if (time_min >= time_max) {
+    stop("time_min must be less than time_max")
   }
 
   # Nothing to return if all checks passed
