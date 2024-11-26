@@ -9,7 +9,7 @@
 #'   maxima) in the time series of distances traveled between consecutive time
 #'   points in the trajectory data frame are found. Next, potential row indices
 #'   corresponding to the beginnings of swim bouts are identified. Finally, each
-#'   bout index is paired with a peak index occuring afterwards. If any bout or
+#'   bout index is paired with a peak index occurring afterwards. If any bout or
 #'   peak indices remain, they are discarded.
 #'
 #' @param trajectory a trajectory data frame. See `create_trajectory()` for more
