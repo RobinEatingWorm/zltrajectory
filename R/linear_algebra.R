@@ -27,7 +27,7 @@ linear_algebra_angles <- function(v1, v2) {
   directions <- sign((u1[, 1] * u2[, 2]) - (u1[, 2] * u2[, 1]))
 
   # Special case where angles are exactly 180 degrees
-  directions[directions == 0] = 1
+  directions[directions == 0] <- 1
 
   # Return directed angles
   return(angles * directions)
@@ -49,5 +49,5 @@ linear_algebra_distances <- function(p1, p2) {
   validate_matrices(p1, p2)
 
   # Distance formula
-  return(apply(p2 - p1, 1, norm, type = "2"))
+  return(sqrt((p2[, 1] - p1[, 1]) ^ 2 + (p2[, 2] - p1[, 2]) ^ 2))
 }
