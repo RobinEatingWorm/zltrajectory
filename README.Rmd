@@ -118,6 +118,11 @@ Chang, W., Cheng, J., Allaire, J., Sievert, C., Schloerke, B., Xie, Y., Allen,
 J., McPherson, J., Dipert, A., & Borges, B. (2023). *Shiny: Web application
 framework for r*. R package version 1.8.0. https://shiny.posit.co/
 
+Kawashima, T., Zwart, M. F., Yang, C.-T., Mensh, B. D., & Ahrens, M. B. (2016).
+The Serotonergic System Tracks the Outcomes of Actions to Mediate Short-Term
+Motor Learning. *Cell*, *167*(4), 933-946.e20.
+https://doi.org/10.1016/j.cell.2016.09.055
+
 Nuesser, L. (2016). Designating a segregation parameter for contamination
 detection in behavioral assays using zebrafish larvae; supporting information
 (Version 4). figshare. https://doi.org/10.6084/m9.figshare.3102133.v4
