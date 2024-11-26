@@ -31,8 +31,9 @@ Use the following commands to install the latest development version of
 the package.
 
 ``` r
-install.packages("devtools")
-library(devtools)
+if (!requireNamespace("devtools")) {
+  install.packages("devtools")
+}
 devtools::install_github("RobinEatingWorm/zltrajectory", build_vignettes = TRUE)
 library(zltrajectory)
 ```

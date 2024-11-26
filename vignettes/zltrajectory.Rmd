@@ -29,7 +29,9 @@ zebrafish larva.
 Use the following commands to download `zltrajectory`.
 
 ```{r, eval=FALSE}
-require("devtools")
+if (!requireNamespace("devtools")) {
+  install.packages("devtools")
+}
 devtools::install_github("RobinEatingWorm/zltrajectory", build_vignettes = TRUE)
 ```
 
