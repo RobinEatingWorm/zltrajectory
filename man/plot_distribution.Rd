@@ -44,7 +44,8 @@ trajectory <- create_trajectory(cadmium_zebrafish,
                                 x = "X.center",
                                 y = "Y.center",
                                 t = "Trial.time")
-angles <- calculate_angles(trajectory)
+bouts <- find_bouts(trajectory, min_distance = 2, min_time = 0.6)
+angles <- calculate_angles(trajectory, bouts = bouts)
 plot_distribution(angles, "histogram",
                   main = "Distribution of Angles",
                   xlab = "Angle (degrees)",

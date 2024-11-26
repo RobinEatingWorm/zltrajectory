@@ -11,7 +11,9 @@ plot_trajectory(
   ylab = "y-position",
   time_min = min(trajectory$t),
   time_max = max(trajectory$t),
-  col = NULL
+  col = NULL,
+  time_colorbar = TRUE,
+  time_colorbar_lab = "Time"
 )
 }
 \arguments{
@@ -28,9 +30,19 @@ details.}
 
 \item{time_max}{the maximum time to plot.}
 
-\item{col}{colors of each point in the plot. By default the rainbow color
-palette is used, with red indicating the position at the earliest time and
-magenta indicating the position at the latest time.}
+\item{col}{colors of each point in the plot. By default, this function uses
+the rainbow color palette, which contains the colors red, yellow, green,
+cyan, blue, and magenta in that order. Hues in between each consecutive
+pair of colors are also included. The position colored in red occurs at the
+earliest time, the position colored in yellow occurs at a time after the
+time of the position colored in red, the position colored in green occurs
+at a time after the time of the position colored in yellow, and so on, with
+the position colored in magenta occurring at the latest time.}
+
+\item{time_colorbar}{whether to display a colorbar showing the mapping
+between times and colors of points in the trajectory.}
+
+\item{time_colorbar_lab}{a label for the colorbar.}
 }
 \description{
 This function plots the x- and y-positions of a fish within a
@@ -43,6 +55,7 @@ trajectory <- create_trajectory(cadmium_zebrafish,
                                 t = "Trial.time")
 plot_trajectory(trajectory,
                 xlab = "x-position (mm)", ylab = "y-position (mm)",
-                time_min = 1200, time_max = 1260)
+                time_min = 1200, time_max = 1260,
+                time_colorbar_lab = "Time\n(s)")
 
 }
