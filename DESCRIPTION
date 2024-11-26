@@ -16,6 +16,7 @@ Imports:
     graphics,
     grDevices,
     pracma,
+    shiny,
     stats
 Suggests: 
     knitr,
