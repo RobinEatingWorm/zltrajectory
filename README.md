@@ -32,6 +32,7 @@ the package.
 
 ``` r
 install.packages("devtools")
+library(devtools)
 devtools::install_github("RobinEatingWorm/zltrajectory", build_vignettes = TRUE)
 library(zltrajectory)
 ```
@@ -39,7 +40,7 @@ library(zltrajectory)
 Use the following command to run the Shiny app.
 
 ``` r
-# Under construction
+run_zltrajectory()
 ```
 
 ## Overview
@@ -53,7 +54,7 @@ data(package = "zltrajectory")
 browseVignettes("zltrajectory")
 ```
 
-`zltrajectory` contains 8 functions.
+`zltrajectory` contains 9 functions.
 
 1.  `create_trajectory` creates a data frame containing trajectory
     information that is usable in other functions within this package.
@@ -74,6 +75,8 @@ browseVignettes("zltrajectory")
     a vector of values. Supported visualization types include
     histograms, kernel density estimates (KDEs), and empirical
     cumulative distribution functions (ECDFs).
+9.  `run_zltrajectory` runs a Shiny web application for interactive use
+    of the package.
 
 This package also contains a sample dataset named `cadmium_zebrafish`
 adapted from Nuesser (2016). Refer to the documentation of
@@ -92,18 +95,20 @@ recorded in data. The base R packages `graphics` and `grDevices` were
 used in the plotting functions `plot_diagnostics`, `plot_trajectory`,
 and `plot_distribution` to generate their respective plots.
 Additionally, `plot_distribution` depends on the base R package `stats`
-to calculate KDEs and ECDFs. No other dependencies were used in the
-source code of this package. Generative AI tools were not used in the
-development of this package.
+to calculate KDEs and ECDFs. The R package `shiny` was used to create an
+interactive web application and the `run_zltrajectory` function. No
+other dependencies were used in the source code of this package.
+Generative AI tools were not used in the development of this package.
 
 ## References
 
-Borchers, H. W. (2023). *pracma: Practical Numerical Math Functions*.
+Borchers, H. W. (2023). *pracma: Practical Numerical Math Functions*. R
+package version 2.4.4.
 
-Kawashima, T., Zwart, M. F., Yang, C.-T., Mensh, B. D., & Ahrens, M. B.
-(2016). The Serotonergic System Tracks the Outcomes of Actions to
-Mediate Short-Term Motor Learning. *Cell*, *167*(4), 933-946.e20.
-<https://doi.org/10.1016/j.cell.2016.09.055>
+Chang, W., Cheng, J., Allaire, J., Sievert, C., Schloerke, B., Xie, Y.,
+Allen, J., McPherson, J., Dipert, A., & Borges, B. (2023). *Shiny: Web
+application framework for r*. R package version 1.8.0.
+<https://shiny.posit.co/>
 
 Nuesser, L. (2016). Designating a segregation parameter for
 contamination detection in behavioral assays using zebrafish larvae;
