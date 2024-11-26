@@ -21,6 +21,9 @@
 #'     \item{Y.center}{The y-position of the center of the zebrafish (mm)}
 #'   }
 #'
+#' @examples
+#' cadmium_zebrafish
+#'
 #' @source Nuesser, L. (2016). Designating a segregation parameter for
 #'   contamination detection in behavioral assays using zebrafish larvae;
 #'   supporting information (Version 4). figshare.

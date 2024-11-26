@@ -36,6 +36,10 @@ Trajectory data of one zebrafish larva from an experiment
   original by removing the metadata and only saving three columns in the
   table required for this package.
 }
+\examples{
+cadmium_zebrafish
+
+}
 \references{
 Nüßer, L. K., Skulovich, O., Hartmann, S., Seiler, T.-B.,
   Cofalla, C., Schuettrumpf, H., Hollert, H., Salomons, E., & Ostfeld, A.
